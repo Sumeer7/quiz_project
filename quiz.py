@@ -29,6 +29,10 @@ def read_questions(quiz_question_file_name):
 
 
 def write_questions(questions, quiz_question_file_name):
+    directory = "quiz_questions"
+    if not os.path.isdir("quiz_questions"):
+        path = os.path.join(os. getcwd(), directory)
+        os.mkdir(path)
     fp = open("quiz_questions"+os.sep+quiz_question_file_name, 'w+')
     dump_data = json.dumps(questions, default=obj_dict, indent=1)
     fp.write(dump_data)
